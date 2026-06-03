@@ -30,14 +30,11 @@ module.exports = {
         cream:    { DEFAULT: '#F9EFE5', border: '#E2CDB8' },
         progress: { active: '#5CB85C', inactive: '#C5B89A' },
         flag:     { red: '#BF0A30', blue: '#002868' },
-        gray:     { custom: '#515151', border:"#2C2C37" },
+        gray:     { custom: '#515151', border:"#8C8C8C" },
         heading:  { custom: '#104E8B' },
       },
       fontFamily: {
-        heading:   ['"Fira Sans"', 'sans-serif'],
-        body:      ['Lato', 'sans-serif'],
-        headingCustom: ['Helvetica', 'Arial', 'sans-serif'],
-        inter:     ['Inter', 'sans-serif'],
+        body:       ['Inter', 'sans-serif'],
       },
       fontSize: {
         xs: '10px',

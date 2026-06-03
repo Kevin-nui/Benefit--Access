@@ -77,7 +77,7 @@ export function TrustBadges() {
       {BADGES.map(({ label, icon }) => (
         <div key={label} className="flex flex-col items-center gap-1.5">
           {icon}
-          <span className="font-heading text-sm font-bold text-white drop-shadow">
+          <span className=" font-body text-sm font-bold text-white drop-shadow">
             {label}
           </span>
         </div>

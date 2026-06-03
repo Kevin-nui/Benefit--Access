@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { StepView } from "./src/components/StepView";
-import ComingSoon from "@/components/comingsoon";
+import  Home from "@/pages/Home";
+import ComingSoon from "@/pages/ComingSoon";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<StepView />} />
+      <Route path="/" element={<Home />} />
       <Route path="/terms" element={<ComingSoon />} />
       <Route path="/privacy-policy" element={<ComingSoon />} />
       <Route path="/contact-us" element={<ComingSoon />} />

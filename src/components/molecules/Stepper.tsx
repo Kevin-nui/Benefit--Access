@@ -16,14 +16,7 @@ export function Stepper({ progress, total = 4, onSegmentClick }: StepperProps) {
           className="h-8 w-auto md:h-10"
         />
       </div>
-      <div className="mt-3 flex justify-center px-6">
-        <img
-          src="/assets/money-hero.png"
-          alt="Cash pile"
-          className="h-28 w-auto md:h-44"
-          loading="eager"
-        />
-      </div>
+
       <div className="mt-5 px-6 md:mx-auto md:w-full md:max-w-stepper-width">
         <ProgressBar
           current={progress}

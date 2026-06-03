@@ -1,12 +1,16 @@
 import { useWizard } from "@/context/wizard-context";
-import { Button, TextField, Select } from "@/ui";
-import { FormField } from "@/components/FormField";
-import { DateOfBirthInput } from "@/components/DateOfBirthInput";
+import { Button, TextField, Select } from "@/components/atoms";
+import { FormField } from "@/components/molecules/FormField";
+import { DateOfBirthInput } from "@/components/molecules/DateOfBirthInput";
 import { GENDER_OPTIONS } from "@/constants";
 
 export function BasicsStep() {
-  const { register, control, errors, watch, isLoading, goNext } = useWizard();
+  const { register, control, errors, watch, isLoading, goNext, isValid } =
+    useWizard();
 
+  const hasErrors = !!Object.keys(errors).length;
+
+  console.log("si valid", isValid);
   return (
     <form
       className="flex flex-col gap-5"
@@ -15,11 +19,11 @@ export function BasicsStep() {
         goNext();
       }}
     >
-      <div className="text-center">
-        <h2 className="font-heading text-lg font-bold text-heading-custom">
+      <div>
+        <p className=" font-body text-xl font-bold text-heading-custom">
           Welcome!
-        </h2>
-        <p className="mt-1 font-body text-base font-bold text-gray-custom">
+        </p>
+        <p className="  font-body text-base font-regular text-gray-custom">
           Now we just need the basics
         </p>
       </div>
@@ -55,8 +59,15 @@ export function BasicsStep() {
         />
       </FormField>
 
-      <Button fullWidth isLoading={isLoading} type="submit">
-        CONTINUE
+      <Button
+        className="self-end"
+        fullWidth
+        isLoading={isLoading}
+        type="submit"
+        disabled={hasErrors}
+        size="sm"
+      >
+        Continue
       </Button>
     </form>
   );

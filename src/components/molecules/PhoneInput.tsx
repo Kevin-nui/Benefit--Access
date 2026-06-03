@@ -1,6 +1,6 @@
 import { Controller, type Control } from "react-hook-form";
 import { formatPhone } from "@/utils";
-import { TextField } from "@/ui";
+import { TextField } from "@/components/atoms";
 import type { FormData } from "@/types";
 
 interface Props {

@@ -61,11 +61,13 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
   const {
     register,
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     trigger,
     watch,
     setValue,
   } = form;
+
+  console.log("is valid", isValid);
 
   // Persist to sessionStorage on every change
   useEffect(() => {
@@ -129,6 +131,7 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
         errors,
         watch,
         setValue,
+        isValid,
       }}
     >
       {children}

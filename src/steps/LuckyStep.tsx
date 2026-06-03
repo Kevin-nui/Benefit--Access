@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useWizard } from "@/context/wizard-context";
-import { Button } from "@/ui";
+import { Button } from "@/components/atoms";
 
 export function LuckyStep() {
   const { goNext } = useWizard();
 
   return (
-    <div className="flex flex-col gap-6 py-4 text-center  font-headingCustom">
+    <div className="flex flex-col gap-6 py-4 text-center   font-bodyCustom">
       <motion.h2
-        className=" font-headingCustom text-lg text-black"
+        className="  font-bodyCustom text-lg text-black"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}

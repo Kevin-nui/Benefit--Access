@@ -13,7 +13,7 @@ export function FormField({ label, error, children }: Props) {
     <div className="flex flex-col gap-1">
       <label
         htmlFor={id}
-        className="font-body text-sm font-bold uppercase tracking-wider text-gray-custom"
+        className="font-body text-sm font-regular  tracking-wider text-gray-custom"
       >
         {label}
       </label>

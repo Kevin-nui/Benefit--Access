@@ -1,7 +1,7 @@
-import { Header } from "@/components/Header";
-import AppRoutes from "../routes";
-import { BenefitCards } from "@/components/BenefitCards";
-import { Footer } from "@/components/Footer";
+import { Header } from "@/components/molecules/Header";
+import AppRoutes from "./routes/routes";
+import { BenefitCards } from "@/components/molecules/BenefitCards";
+import { Footer } from "@/components/molecules/Footer";
 
 export default function App() {
   return (
