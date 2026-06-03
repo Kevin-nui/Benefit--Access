@@ -1,6 +1,6 @@
 import { useWizard } from "@/context/wizard-context";
-import { Button, TextField, Select } from "@/ui";
-import { FormField } from "@/components/FormField";
+import { Button, TextField, Select } from "@/components/atoms";
+import { FormField } from "@/components/molecules/FormField";
 import { US_STATES } from "@/constants";
 
 export function AddressStep() {

@@ -1,10 +1,10 @@
 const LINKS = [
-  { label: "Terms & Conditions", href: "#terms" },
-  { label: "Unsubscribe", href: "#unsubscribe" },
-  { label: "Privacy Policy", href: "#privacy" },
-  { label: "Program Requirements", href: "#requirements" },
-  { label: "Do Not Sell My Info", href: "#do-not-sell" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Unsubscribe", href: "/unsubscribe" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Program Requirements", href: "/program-requirements" },
+  { label: "Do Not Sell My Info", href: "/do-not-sell" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export function Footer() {

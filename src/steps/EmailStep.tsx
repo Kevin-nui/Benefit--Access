@@ -1,6 +1,6 @@
 import { useWizard } from "@/context/wizard-context";
-import { Button, TextField } from "@/ui";
-import { FormField } from "@/components/FormField";
+import { Button, TextField } from "@/components/atoms";
+import { FormField } from "@/components/molecules/FormField";
 
 export function EmailStep() {
   const { register, errors, isLoading, goNext } = useWizard();

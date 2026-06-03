@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useWizard } from "@/context/wizard-context";
-import { Button } from "@/ui";
+import { Button } from "@/components/atoms";
 
 export function LuckyStep() {
   const { goNext } = useWizard();

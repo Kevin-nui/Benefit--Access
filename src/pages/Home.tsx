@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useWizard } from "@/context/wizard-context";
-import { Stepper } from "./Stepper";
-import { TrustBadges } from "./TrustBadges";
+import { Stepper } from "../components/molecules/Stepper";
+import { TrustBadges } from "../components/molecules/TrustBadges";
 
 import { EmailStep } from "@/steps/EmailStep";
 import { BasicsStep } from "@/steps/BasicsStep";
@@ -27,7 +27,7 @@ const SEGMENT_TO_STEP_INDEX: Record<number, number> = {
   4: 3, // phone
 };
 
-export function StepView() {
+export default function Home() {
   const { stepIndex, direction, goTo, goNext } = useWizard();
   const step = STEPS[stepIndex];
   const { Component } = step;

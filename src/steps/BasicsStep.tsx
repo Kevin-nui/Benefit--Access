@@ -1,7 +1,7 @@
 import { useWizard } from "@/context/wizard-context";
-import { Button, TextField, Select } from "@/ui";
-import { FormField } from "@/components/FormField";
-import { DateOfBirthInput } from "@/components/DateOfBirthInput";
+import { Button, TextField, Select } from "@/components/atoms";
+import { FormField } from "@/components/molecules/FormField";
+import { DateOfBirthInput } from "@/components/molecules/DateOfBirthInput";
 import { GENDER_OPTIONS } from "@/constants";
 
 export function BasicsStep() {

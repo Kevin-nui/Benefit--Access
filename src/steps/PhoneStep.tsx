@@ -1,7 +1,7 @@
 import { useWizard } from "@/context/wizard-context";
-import { Button } from "@/ui";
-import { FormField } from "@/components/FormField";
-import { PhoneInput } from "@/components/PhoneInput";
+import { Button } from "@/components/atoms";
+import { FormField } from "@/components/molecules/FormField";
+import { PhoneInput } from "@/components/molecules/PhoneInput";
 
 export function PhoneStep() {
   const { control, errors, watch, isLoading, goNext } = useWizard();

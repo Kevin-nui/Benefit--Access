@@ -1,6 +1,6 @@
 import { Controller, type Control, type FieldErrors } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
-import { Select } from "@/ui";
+import { Select } from "@/components/atoms";
 import { MONTHS, DAYS, YEARS } from "@/constants";
 import type { FormData } from "@/types";
 
