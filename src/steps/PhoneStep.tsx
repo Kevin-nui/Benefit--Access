@@ -6,7 +6,7 @@ import { PhoneInput } from "@/components/PhoneInput";
 export function PhoneStep() {
   const { control, errors, watch, isLoading, goNext } = useWizard();
   const heading = `Last Step, ${watch("firstName") || "Friend"}!`;
-
+  const hasErrors = !!Object.keys(errors).length;
   return (
     <form
       className="flex flex-col gap-5"
@@ -15,11 +15,11 @@ export function PhoneStep() {
         goNext();
       }}
     >
-      <div className="text-center">
-        <h2 className="font-heading text-lg font-bold text-heading-custom">
+      <div>
+        <p className=" font-body text-xl font-bold text-heading-custom">
           {heading}
-        </h2>
-        <p className="mt-1 font-body text-sm font-medium text-gray-custom">
+        </p>
+        <p className="  font-body text-base font-regular text-gray-custom">
           Thanks! Please confirm your number
         </p>
       </div>
@@ -53,8 +53,15 @@ export function PhoneStep() {
         claim.
       </p>
 
-      <Button fullWidth isLoading={isLoading} type="submit">
-        SUBMIT
+      <Button
+        className="self-end"
+        fullWidth
+        isLoading={isLoading}
+        type="submit"
+        disabled={hasErrors}
+        size="sm"
+      >
+        Submit
       </Button>
     </form>
   );

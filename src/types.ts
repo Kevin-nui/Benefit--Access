@@ -47,5 +47,5 @@
       watch: UseFormWatch<FormData>;
       setValue: UseFormSetValue<FormData>;
       gotoNextIfValid: () => Promise<void>;
-      
+      isValid: boolean;
     }

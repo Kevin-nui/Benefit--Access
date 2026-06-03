@@ -6,7 +6,7 @@ import { US_STATES } from "@/constants";
 export function AddressStep() {
   const { register, errors, watch, isLoading, goNext } = useWizard();
   const heading = `Keep Going, ${watch("firstName") || "Friend"}!`;
-
+  const hasErrors = !!Object.keys(errors).length;
   return (
     <form
       className="flex flex-col gap-5"
@@ -15,12 +15,12 @@ export function AddressStep() {
         goNext();
       }}
     >
-      <div className="text-center">
-        <h2 className="font-heading text-lg font-bold text-heading-custom">
+      <div>
+        <p className=" font-body text-xl font-bold text-heading-custom">
           {heading}
-        </h2>
-        <p className="mt-1 font-body text-base font-bold text-gray-custom">
-          Confirm your address to qualify
+        </p>
+        <p className="  font-body text-base font-regular text-gray-custom">
+          Confirm Your Address To Qualify
         </p>
       </div>
 
@@ -63,8 +63,15 @@ export function AddressStep() {
         </FormField>
       </div>
 
-      <Button fullWidth isLoading={isLoading} type="submit">
-        CONTINUE
+      <Button
+        className="self-end"
+        fullWidth
+        isLoading={isLoading}
+        type="submit"
+        disabled={hasErrors}
+        size="sm"
+      >
+        Continue
       </Button>
     </form>
   );

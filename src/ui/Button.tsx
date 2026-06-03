@@ -3,13 +3,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-heading font-bold uppercase tracking-wider transition-all duration-150 outline-none",
+  "inline-flex items-center justify-center gap-2 rounded-full  font-body font-medium tracking-wider transition-all duration-150 outline-none",
   {
     variants: {
       variant: {
         primary: [
+          "relative overflow-hidden",
           "bg-primary text-white shadow-btn",
-          "hover:bg-orange-hover",
+          "transition-colors duration-300",
+          // Sliding overlay
+          "before:absolute before:inset-y-0 before:left-0 before:w-full",
+          "before:translate-x-[-100%] before:bg-orange-hover",
+          "before:transition-transform before:duration-300 before:ease-in-out",
+          "hover:before:translate-x-0",
+          // Keep content above the overlay
+          "[&>*]:relative [&>*]:z-10",
           "active:scale-[0.97]",
           "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
           "disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:active:scale-100",
@@ -28,7 +36,7 @@ const buttonVariants = cva(
         lg: "h-14 px-10 text-xl",
       },
       fullWidth: {
-        true: "w-full",
+        true: " w-40",
       },
     },
     defaultVariants: {

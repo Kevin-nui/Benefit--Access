@@ -19,7 +19,7 @@ export function DateOfBirthInput({ control, errors }: Props) {
     errors?.month?.message || errors?.day?.message || errors?.year?.message;
   return (
     <div className="flex flex-col gap-1">
-      <span className="font-body text-sm font-bold uppercase tracking-wider text-gray-custom">
+      <span className="font-body text-sm font-regular  tracking-wider text-gray-custom">
         Date of Birth
       </span>
       <div

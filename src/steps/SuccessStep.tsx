@@ -44,7 +44,7 @@ export function SuccessStep() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <h2 className="font-heading text-lg font-bold text-heading-custom">
+        <h2 className=" font-body text-lg font-bold text-heading-custom">
           {heading}
         </h2>
         <p className="font-body text-base text-slate-600">

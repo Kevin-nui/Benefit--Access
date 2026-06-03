@@ -1,10 +1,10 @@
 const LINKS = [
-  { label: "Terms & Conditions", href: "/terms" },
-  { label: "Unsubscribe", href: "/unsubscribe" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Program Requirements", href: "/program-requirements" },
-  { label: "Do Not Sell My Info", href: "/do-not-sell" },
-  { label: "Contact Us", href: "/contact-us" },
+  { label: "Terms & Conditions", href: "#terms" },
+  { label: "Unsubscribe", href: "#unsubscribe" },
+  { label: "Privacy Policy", href: "#privacy" },
+  { label: "Program Requirements", href: "#requirements" },
+  { label: "Do Not Sell My Info", href: "#do-not-sell" },
+  { label: "Contact Us", href: "#contact" },
 ];
 
 export function Footer() {
@@ -23,7 +23,7 @@ export function Footer() {
               <li key={label}>
                 <a
                   href={href}
-                  className="font-lato text-xs font-regular uppercase tracking-widest text-slate-500 hover:text-heading-custom"
+                  className="font-body text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-navy"
                 >
                   {label}
                 </a>
@@ -31,7 +31,7 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-        <p className="font-lato font-regular uppercase text-xs text-slate-500">
+        <p className="font-body text-[11px] text-slate-400">
           © Benefits Access Center, {new Date().getFullYear()}
         </p>
       </div>

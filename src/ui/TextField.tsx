@@ -23,9 +23,9 @@ export function TextField({
         // border
         "border-2  border-gray-border",
         // hover
-        "hover:border-navy",
+        "hover:border-navy hover:border-3",
         // focus
-        "focus:border-navy focus:ring-2 focus:ring-navy/20",
+        "focus:brand-blue focus:ring-2 focus:ring-brand-blue/20",
         // error
         hasError &&
           "border-red-500 ring-2 ring-red-500/20 focus:border-red-500 focus:ring-red-500/20",
