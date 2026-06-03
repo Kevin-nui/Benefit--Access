@@ -9,41 +9,69 @@ interface Props {
 
 export function ProgressBar({ current, total, onSegmentClick }: Props) {
   return (
-    <div className="flex gap-1.5">
-      {Array.from({ length: total }, (_, i) => {
-        const segment = i + 1;
-        const filled = segment <= current;
-        const isActive = segment === current;
-        const clickable = segment !== current && onSegmentClick;
+    <div className="flex flex-col gap-2">
+      
+      <div className="flex gap-1.5">
+        {Array.from({ length: total }, (_, i) => {
+          const segment = i + 1;
+          const filled = segment <= current;
+          const isActive = segment === current;
+          const clickable = segment !== current && onSegmentClick;
 
-        return (
-          <div
-            key={i}
-            role="button"
-            tabIndex={clickable ? 0 : undefined}
-            onClick={() => clickable && onSegmentClick(segment)}
-            onKeyDown={(e) => {
-              if (clickable && (e.key === "Enter" || e.key === " "))
-                onSegmentClick(segment);
-            }}
-            className={cn(
-              "relative h-2.5 flex-1 overflow-hidden rounded-full transition-opacity duration-150",
-              filled ? "bg-progress-active" : "bg-progress-inactive",
-              clickable && "cursor-pointer hover:opacity-80",
-              isActive && "cursor-default",
-            )}
-          >
-            {filled && (
-              <motion.div
-                className="absolute inset-0 rounded-full bg-progress-active"
-                initial={{ scaleX: 0, originX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-              />
-            )}
-          </div>
-        );
-      })}
+          return (
+            <div
+              key={i}
+              role="button"
+              tabIndex={clickable ? 0 : undefined}
+              onClick={() => clickable && onSegmentClick(segment)}
+              onKeyDown={(e) => {
+                if (clickable && (e.key === "Enter" || e.key === " "))
+                  onSegmentClick(segment);
+              }}
+              className={cn(
+                "relative h-2.5 flex-1 overflow-hidden rounded-full transition-opacity duration-150",
+                filled ? "bg-progress-active" : "bg-progress-inactive",
+                clickable && "cursor-pointer hover:opacity-80",
+                isActive && "cursor-default",
+              )}
+            >
+              {filled && (
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-progress-active"
+                  initial={{ scaleX: 0, originX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex gap-1.5">
+        {Array.from({ length: total }, (_, i) => {
+          const segment = i + 1;
+          const filled = segment <= current;
+          const isActive = segment === current;
+
+          return (
+            <div key={i} className="flex-1">
+              <span
+                className={cn(
+                  "block truncate text-center text-sm font-bold transition-colors duration-150 font-body",
+                  isActive
+                    ? "text-progress-active font-semibold"
+                    : filled
+                      ? "text-progress-active opacity-70"
+                      : "text-progress-inactive",
+                )}
+              >
+                Step {segment}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

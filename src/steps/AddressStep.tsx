@@ -4,7 +4,8 @@ import { FormField } from "@/components/molecules/FormField";
 import { US_STATES } from "@/constants";
 
 export function AddressStep() {
-  const { register, errors, watch, isLoading, goNext } = useWizard();
+  const { register, errors, watch, isLoading, goNext, goBack, stepIndex } =
+    useWizard();
   const heading = `Keep Going, ${watch("firstName") || "Friend"}!`;
   const hasErrors = !!Object.keys(errors).length;
   return (
@@ -62,17 +63,35 @@ export function AddressStep() {
           />
         </FormField>
       </div>
+      <div className="flex justify-between">
+        <Button
+          className="self-start"
+          fullWidth
+          variant="previous"
+          isLoading={isLoading}
+          type="submit"
+          size="sm"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("goBack called", stepIndex);
+            goBack();
+          }}
+        >
+          Previous
+        </Button>
 
-      <Button
-        className="self-end"
-        fullWidth
-        isLoading={isLoading}
-        type="submit"
-        disabled={hasErrors}
-        size="sm"
-      >
-        Continue
-      </Button>
+        <Button
+          className="self-end"
+          fullWidth
+          isLoading={isLoading}
+          type="submit"
+          disabled={hasErrors}
+          size="sm"
+        >
+          Continue
+        </Button>
+      </div>
     </form>
   );
 }

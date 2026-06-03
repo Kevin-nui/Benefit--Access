@@ -5,8 +5,17 @@ import { DateOfBirthInput } from "@/components/molecules/DateOfBirthInput";
 import { GENDER_OPTIONS } from "@/constants";
 
 export function BasicsStep() {
-  const { register, control, errors, watch, isLoading, goNext, isValid } =
-    useWizard();
+  const {
+    register,
+    control,
+    errors,
+    watch,
+    isLoading,
+    goNext,
+    goBack,
+    isValid,
+    stepIndex,
+  } = useWizard();
 
   const hasErrors = !!Object.keys(errors).length;
 
@@ -58,17 +67,35 @@ export function BasicsStep() {
           hasError={!!errors.gender}
         />
       </FormField>
+      <div className="flex justify-between">
+        <Button
+          className="self-start"
+          fullWidth
+          variant="previous"
+          isLoading={isLoading}
+          type="submit"
+          size="sm"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("goBack called", stepIndex);
+            goBack();
+          }}
+        >
+          Previous
+        </Button>
 
-      <Button
-        className="self-end"
-        fullWidth
-        isLoading={isLoading}
-        type="submit"
-        disabled={hasErrors}
-        size="sm"
-      >
-        Continue
-      </Button>
+        <Button
+          className="self-end"
+          fullWidth
+          isLoading={isLoading}
+          type="submit"
+          disabled={hasErrors}
+          size="sm"
+        >
+          Continue
+        </Button>
+      </div>
     </form>
   );
 }

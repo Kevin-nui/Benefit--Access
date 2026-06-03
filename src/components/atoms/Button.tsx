@@ -29,6 +29,14 @@ const buttonVariants = cva(
           "focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
           "disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100",
         ].join(" "),
+
+        previous: [
+          "bg-gray-custom/60 text-white border border-gray-custom/50",
+          "hover:bg-gray-custom/90",
+          "active:scale-[0.97]",
+          "focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
+          "disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100",
+        ].join(" "),
       },
       size: {
         sm: "h-10 px-5 text-sm",
