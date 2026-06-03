@@ -25,7 +25,11 @@ export function AddressStep() {
         </p>
       </div>
 
-      <FormField label="ZIP Code" error={errors.zipCode?.message}>
+      <FormField
+        label="ZIP Code"
+        error={errors.zipCode?.message}
+        name="zipCode"
+      >
         <TextField
           {...register("zipCode")}
           type="text"
@@ -36,7 +40,11 @@ export function AddressStep() {
         />
       </FormField>
 
-      <FormField label="Address" error={errors.streetAddress?.message}>
+      <FormField
+        label="Address"
+        error={errors.streetAddress?.message}
+        name="streetAddress"
+      >
         <TextField
           {...register("streetAddress")}
           type="text"
@@ -46,7 +54,7 @@ export function AddressStep() {
       </FormField>
 
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="City" error={errors.city?.message}>
+        <FormField label="City" error={errors.city?.message} name="city">
           <TextField
             {...register("city")}
             type="text"
@@ -54,7 +62,7 @@ export function AddressStep() {
             hasError={!!errors.city}
           />
         </FormField>
-        <FormField label="State" error={errors.state?.message}>
+        <FormField label="State" error={errors.state?.message} name="state">
           <Select
             {...register("state")}
             options={US_STATES as { value: string; label: string }[]}

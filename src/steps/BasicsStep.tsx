@@ -13,13 +13,10 @@ export function BasicsStep() {
     isLoading,
     goNext,
     goBack,
-    isValid,
     stepIndex,
   } = useWizard();
 
   const hasErrors = !!Object.keys(errors).length;
-
-  console.log("si valid", isValid);
   return (
     <form
       className="flex flex-col gap-5"
@@ -37,7 +34,11 @@ export function BasicsStep() {
         </p>
       </div>
 
-      <FormField label="First Name" error={errors.firstName?.message}>
+      <FormField
+        label="First Name"
+        error={errors.firstName?.message}
+        name="firstName"
+      >
         <TextField
           {...register("firstName")}
           type="text"
@@ -47,7 +48,11 @@ export function BasicsStep() {
         />
       </FormField>
 
-      <FormField label="Last Name" error={errors.lastName?.message}>
+      <FormField
+        label="Last Name"
+        error={errors.lastName?.message}
+        name="lastName"
+      >
         <TextField
           {...register("lastName")}
           type="text"
@@ -59,7 +64,7 @@ export function BasicsStep() {
 
       <DateOfBirthInput control={control} errors={errors.dateOfBirth} />
 
-      <FormField label="Gender" error={errors.gender?.message}>
+      <FormField label="Gender" error={errors.gender?.message} name="gender">
         <Select
           {...register("gender")}
           options={GENDER_OPTIONS}

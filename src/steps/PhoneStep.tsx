@@ -25,7 +25,11 @@ export function PhoneStep() {
         </p>
       </div>
 
-      <FormField label="Phone Number" error={errors.phoneNumber?.message}>
+      <FormField
+        label="Phone Number"
+        error={errors.phoneNumber?.message}
+        name="phoneNumber"
+      >
         <PhoneInput control={control} hasError={!!errors.phoneNumber} />
       </FormField>
 

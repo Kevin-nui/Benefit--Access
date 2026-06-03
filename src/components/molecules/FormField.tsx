@@ -5,14 +5,15 @@ interface Props {
   label: string;
   error?: string;
   children: ReactNode;
+  name?: string;
 }
 
-export function FormField({ label, error, children }: Props) {
+export function FormField({ label, error, children, name }: Props) {
   const id = useId();
   return (
     <div className="flex flex-col gap-1">
       <label
-        htmlFor={id}
+        htmlFor={name || id}
         className="font-body text-sm font-regular  tracking-wider text-gray-custom"
       >
         {label}
