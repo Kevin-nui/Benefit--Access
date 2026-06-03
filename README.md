@@ -22,24 +22,24 @@ npm run dev
 
 ## Available scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | Type-check + production build → `dist/` |
-| `npm run preview` | Serve the production build locally |
+| Script            | Description                             |
+| ----------------- | --------------------------------------- |
+| `npm run dev`     | Start Vite dev server with HMR          |
+| `npm run build`   | Type-check + production build → `dist/` |
+| `npm run preview` | Serve the production build locally      |
 
 ---
 
 ## Tech stack
 
-| Concern | Library | Why |
-|---|---|---|
-| Build | **Vite 6 + React 18 + TypeScript** | Fastest HMR, tiny bundles, strict types |
-| Form state | **React Hook Form 7** | Minimal re-renders; single form across all steps |
-| Validation | **Zod 3** | Type-safe per-step schemas, composable |
-| Animations | **Framer Motion 11** | Step slide transitions, micro-interactions |
-| Styling | **Tailwind CSS 3** | Design-token-driven, responsive utilities |
-| Class merging | **clsx + tailwind-merge** | Conflict-free conditional classes via cn() |
+| Concern       | Library                            | Why                                              |
+| ------------- | ---------------------------------- | ------------------------------------------------ |
+| Build         | **Vite 6 + React 18 + TypeScript** | Fastest HMR, tiny bundles, strict types          |
+| Form state    | **React Hook Form 7**              | Minimal re-renders; single form across all steps |
+| Validation    | **Zod 3**                          | Type-safe per-step schemas, composable           |
+| Animations    | **Framer Motion 11**               | Step slide transitions, micro-interactions       |
+| Styling       | **Tailwind CSS 3**                 | Design-token-driven, responsive utilities        |
+| Class merging | **clsx + tailwind-merge**          | Conflict-free conditional classes via cn()       |
 
 ---
 
@@ -47,41 +47,53 @@ npm run dev
 
 ```
 src/
-├── components/
-│   ├── ui/                       # Dumb, reusable primitives
-│   │   ├── Button.tsx            # Orange CTA, all interaction states
-│   │   ├── FormField.tsx         # Label + control + animated error
-│   │   ├── TextInput.tsx
-│   │   ├── SelectInput.tsx       # Custom chevron
-│   │   ├── DateOfBirthInput.tsx  # Three-select composite
-│   │   └── PhoneInput.tsx        # Auto-masked (XXX) XXX-XXXX
-│   └── layout/
-│       ├── PageShell.tsx         # Full-page layout orchestrator
-│       ├── DisclaimerBar.tsx
-│       ├── HeroHeader.tsx        # Logo + money image + progress
-│       ├── ProgressBar.tsx       # 4-segment animated fill
-│       ├── TrustBadges.tsx
-│       ├── BenefitCards.tsx
-│       └── SiteFooter.tsx
-│
-├── features/registration/
-│   ├── config/steps.config.ts    # Single source of truth for the wizard
-│   ├── schema/registration.schema.ts
-│   ├── hooks/
-│   │   ├── useWizard.ts
-│   │   └── usePersistedForm.ts
-│   ├── steps/                    # EmailStep, BasicsStep, AddressStep,
-│   │                             # PhoneStep, LuckyStep, SuccessStep
-│   ├── WizardProvider.tsx
-│   ├── StepTransition.tsx
-│   └── RegistrationWizard.tsx    # Config-driven engine
-│
-├── lib/
-│   ├── constants/index.ts
-│   └── utils/index.ts
-├── styles/globals.css
-├── types/registration.ts
-└── main.tsx / App.tsx
+├─ assets/
+│  ├─ icons/
+│  ├─ hero.png
+│  ├─ tick.png
+│  ├─ Vector.svg
+│  └─ vite.svg
+├─ components/
+│  ├─ atoms/
+│  │  ├─ Button.tsx
+│  │  ├─ index.ts
+│  │  ├─ Select.tsx
+│  │  └─ TextField.tsx
+│  └─ molecules/
+│     ├─ BenefitCards.tsx
+│     ├─ DateOfBirthInput.tsx
+│     ├─ Footer.tsx
+│     ├─ FormField.tsx
+│     ├─ Header.tsx
+│     ├─ PhoneInput.tsx
+│     ├─ ProgressBar.tsx
+│     ├─ Stepper.tsx
+│     └─ TrustBadges.tsx
+├─ context/
+│  └─ wizard-context.tsx
+├─ pages/
+│  ├─ ComingSoon.tsx
+│  └─ Home.tsx
+├─ routes/
+│  └─ routes.tsx
+├─ steps/
+│  ├─ AddressStep.tsx
+│  ├─ BasicsStep.tsx
+│  ├─ EmailStep.tsx
+│  ├─ LuckyStep.tsx
+│  ├─ PhoneStep.tsx
+│  └─ SuccessStep.tsx
+├─ styles/
+│  └─ globals.css
+├─ App.tsx
+├─ constants.ts
+├─ index.css
+├─ main.tsx
+├─ schema.ts
+├─ types.ts
+├─ utils.ts
+└─ vite-env.d.ts
+
 ```
 
 ---
@@ -97,10 +109,11 @@ The flow is driven by `steps.config.ts`. Each StepConfig declares:
 - `showHeroHeader / showTrustBadges / showBenefitCards` — layout flags
 
 **To add a step:**
+
 1. Add an entry to STEPS in `steps.config.ts`
 2. Add matching key + component to STEP_COMPONENTS in `RegistrationWizard.tsx`
 3. Add Zod schema for any new fields
-Nothing else changes.
+   Nothing else changes.
 
 ---
 

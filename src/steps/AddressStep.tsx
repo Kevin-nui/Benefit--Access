@@ -4,7 +4,8 @@ import { FormField } from "@/components/molecules/FormField";
 import { US_STATES } from "@/constants";
 
 export function AddressStep() {
-  const { register, errors, watch, isLoading, goNext } = useWizard();
+  const { register, errors, watch, isLoading, goNext, goBack, stepIndex } =
+    useWizard();
   const heading = `Keep Going, ${watch("firstName") || "Friend"}!`;
   const hasErrors = !!Object.keys(errors).length;
   return (
@@ -24,7 +25,11 @@ export function AddressStep() {
         </p>
       </div>
 
-      <FormField label="ZIP Code" error={errors.zipCode?.message}>
+      <FormField
+        label="ZIP Code"
+        error={errors.zipCode?.message}
+        name="zipCode"
+      >
         <TextField
           {...register("zipCode")}
           type="text"
@@ -35,7 +40,11 @@ export function AddressStep() {
         />
       </FormField>
 
-      <FormField label="Address" error={errors.streetAddress?.message}>
+      <FormField
+        label="Address"
+        error={errors.streetAddress?.message}
+        name="streetAddress"
+      >
         <TextField
           {...register("streetAddress")}
           type="text"
@@ -45,7 +54,7 @@ export function AddressStep() {
       </FormField>
 
       <div className="grid grid-cols-2 gap-3">
-        <FormField label="City" error={errors.city?.message}>
+        <FormField label="City" error={errors.city?.message} name="city">
           <TextField
             {...register("city")}
             type="text"
@@ -53,7 +62,7 @@ export function AddressStep() {
             hasError={!!errors.city}
           />
         </FormField>
-        <FormField label="State" error={errors.state?.message}>
+        <FormField label="State" error={errors.state?.message} name="state">
           <Select
             {...register("state")}
             options={US_STATES as { value: string; label: string }[]}
@@ -62,17 +71,35 @@ export function AddressStep() {
           />
         </FormField>
       </div>
+      <div className="flex justify-between">
+        <Button
+          className="self-start"
+          fullWidth
+          variant="previous"
+          isLoading={isLoading}
+          type="submit"
+          size="sm"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("goBack called", stepIndex);
+            goBack();
+          }}
+        >
+          Previous
+        </Button>
 
-      <Button
-        className="self-end"
-        fullWidth
-        isLoading={isLoading}
-        type="submit"
-        disabled={hasErrors}
-        size="sm"
-      >
-        Continue
-      </Button>
+        <Button
+          className="self-end"
+          fullWidth
+          isLoading={isLoading}
+          type="submit"
+          disabled={hasErrors}
+          size="sm"
+        >
+          Continue
+        </Button>
+      </div>
     </form>
   );
 }

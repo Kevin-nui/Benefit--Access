@@ -4,7 +4,8 @@ import { FormField } from "@/components/molecules/FormField";
 import { PhoneInput } from "@/components/molecules/PhoneInput";
 
 export function PhoneStep() {
-  const { control, errors, watch, isLoading, goNext } = useWizard();
+  const { control, errors, watch, isLoading, goNext, goBack, stepIndex } =
+    useWizard();
   const heading = `Last Step, ${watch("firstName") || "Friend"}!`;
   const hasErrors = !!Object.keys(errors).length;
   return (
@@ -24,7 +25,11 @@ export function PhoneStep() {
         </p>
       </div>
 
-      <FormField label="Phone Number" error={errors.phoneNumber?.message}>
+      <FormField
+        label="Phone Number"
+        error={errors.phoneNumber?.message}
+        name="phoneNumber"
+      >
         <PhoneInput control={control} hasError={!!errors.phoneNumber} />
       </FormField>
 
@@ -53,16 +58,34 @@ export function PhoneStep() {
         claim.
       </p>
 
-      <Button
-        className="self-end"
-        fullWidth
-        isLoading={isLoading}
-        type="submit"
-        disabled={hasErrors}
-        size="sm"
-      >
-        Submit
-      </Button>
+      <div className="flex justify-between">
+        <Button
+          className="self-start"
+          fullWidth
+          variant="previous"
+          isLoading={isLoading}
+          type="submit"
+          size="sm"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("goBack called", stepIndex);
+            goBack();
+          }}
+        >
+          Previous
+        </Button>
+        <Button
+          className="self-end"
+          fullWidth
+          isLoading={isLoading}
+          type="submit"
+          disabled={hasErrors}
+          size="sm"
+        >
+          Submit
+        </Button>
+      </div>
     </form>
   );
 }

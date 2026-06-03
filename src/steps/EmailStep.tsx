@@ -40,10 +40,11 @@ export function EmailStep() {
       </p>
 
       {/* Email field */}
-      <FormField label="Email" error={errors.email?.message}>
+      <FormField label="Email" error={errors.email?.message} name="email">
         <TextField
           {...register("email")}
           type="email"
+          id="email"
           autoComplete="email"
           inputMode="email"
           hasError={!!errors.email}
